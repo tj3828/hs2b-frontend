@@ -1,0 +1,14 @@
+version: "3"
+services:
+  hs2b-frontend:
+    image: tj3828/hs2b-frontend-dev
+    container_name: hs2b-frontend-dev
+    environment:
+      CHOKIDAR_USEPOLLING: "true"   # volume 적용
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./
+    volumes:
+      - /var/app/node_modules
+      - ./:/var/app
+    stdin_open: true

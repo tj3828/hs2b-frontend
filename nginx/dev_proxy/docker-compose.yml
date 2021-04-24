@@ -1,0 +1,17 @@
+version: "3"
+services:
+  hs2b-nginx:
+    image: tj3828/hs2b-nginx-dev
+    container_name: hs2b-nginx-dev
+    build:
+      dockerfile: Dockerfile.dev
+      context: .
+    ports:
+      - "3000:80"
+    restart: always
+
+# hs2b-frontend의 docker-compose와 연결
+networks:
+  default:
+    external:
+      name: hs2b-frontend_default
