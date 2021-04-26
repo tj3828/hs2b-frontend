@@ -12,3 +12,9 @@ services:
       - /var/app/node_modules
       - ./:/var/app
     stdin_open: true
+    networks:
+      - hs2b-network
+networks:
+  hs2b-network:
+    driver: bridge
+    name: hs2b-network
