@@ -5,8 +5,15 @@ sudo: required
 services:
   - docker
 
+cache:
+  directories:
+    -docker_images
+
 before_install:
   - docker build -t tj3828/hs2b-frontend-test -f ./Dockerfile.dev ./
+
+before_cache:
+  - docker save -o docker_images/images.tar $(docker images -a -q)
 
 script:
   - docker run -e CI=true tj3828/hs2b-frontend-test npm run test
