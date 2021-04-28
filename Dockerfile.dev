@@ -4,8 +4,6 @@ WORKDIR /var/app
 
 COPY ./package.json ./
 
-RUN npm install -g react-scripts
-RUN npm install --save-dev @testing-library/jest-dom
 RUN npm install -g
 
 COPY ./ ./
