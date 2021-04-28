@@ -1,0 +1,20 @@
+language: generic
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t tj3828/hs2b-frontend-test -f ./Dockerfile.dev ./
+
+script:
+  - docker run -e CI=true tj3828/hs2b-frontend-test npm run test
+
+after_success:
+  - docker build -t tj3828/hs2b-frontend ./
+
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+
+  - docker push tj3828/hs2b-frontend
+
