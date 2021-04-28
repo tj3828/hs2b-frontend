@@ -4,7 +4,6 @@ WORKDIR /var/app
 
 COPY ./package.json ./
 
-RUN npm install react-scripts
 RUN npm install
 
 COPY ./ ./
