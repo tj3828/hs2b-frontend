@@ -26,7 +26,7 @@ function App() {
     axios.post('/api/value', null, {params:{value:value}})
       .then(response => {
         console.log(response)
-        if(response.status == 200) {
+        if(response.status === 200) {
           setLists([...lists, response.data])
           setValue("")
         } else {
@@ -46,7 +46,7 @@ function App() {
           <br/>
           <form className="example" onSubmit={submitHandler}>
             <input type="text" placeholder="입력해주세요..." onChange={changeHandler} value={value}/>
-            <button type="submit">확인</button>
+            <button type="submit">저장</button>
           </form>
         </div>
       </header>
